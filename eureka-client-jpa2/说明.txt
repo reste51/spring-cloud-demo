@@ -1,0 +1,3 @@
+在 Repository 中完成 findByStatus() 根据字段查询的方式 及  测试。
+
+

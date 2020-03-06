@@ -1,0 +1,22 @@
+spring:
+  application:
+    # 更改 注册的实例名称
+    name: eureka-server
+
+eureka:
+  client:
+    service-url:
+#      # 修改注册中心的url
+      defaultZone: http://localhost:8888/eureka/
+    # 注册中心 无需注册该实例的 操作
+#    register-with-eureka: false
+#    fetch-registry: false
+# 更改注册中心页面 的访问端口
+server:
+  port: 8888
+
+
+
+
+
+

@@ -1,17 +1,18 @@
 spring:
   application:
-    # ¸ü¸Ä ×¢²áµÄÊµÀıÃû³Æ
+    # æ³¨å†Œä¸­å¿ƒçš„åç§°
     name: eureka-server
 
 eureka:
   client:
     service-url:
-#      # ĞŞ¸Ä×¢²áÖĞĞÄµÄurl
+      # æ³¨å†Œä¸­å¿ƒçš„ é¡µé¢åœ°å€
       defaultZone: http://localhost:8888/eureka/
-    # ×¢²áÖĞĞÄ ÎŞĞè×¢²á¸ÃÊµÀıµÄ ²Ù×÷
+      # æµ‹è¯•
 #    register-with-eureka: false
 #    fetch-registry: false
-# ¸ü¸Ä×¢²áÖĞĞÄÒ³Ãæ µÄ·ÃÎÊ¶Ë¿Ú
+
+# è®¿é—®æ³¨å†Œä¸­å¿ƒçš„ é¡µé¢ç«¯å£å·
 server:
   port: 8888
 

@@ -14,7 +14,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8888/eureka/
-    # 客户端的健康检查
+    # 客户端的健康检查的上报给注册服务中心
     healthcheck:
       enabled: true
   instance:

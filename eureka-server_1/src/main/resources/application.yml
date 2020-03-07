@@ -10,6 +10,7 @@ eureka:
       defaultZone: http://localhost:8888/eureka/
       # 不注册中心中
     register-with-eureka: false
+    # 获取服务注册信息
 #    fetch-registry: false
 
 # 访问注册中心的 页面端口号

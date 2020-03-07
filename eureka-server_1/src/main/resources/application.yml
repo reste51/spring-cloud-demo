@@ -8,8 +8,8 @@ eureka:
     service-url:
       # 注册中心的 页面地址
       defaultZone: http://localhost:8888/eureka/
-      # 测试
-#    register-with-eureka: false
+      # 不注册中心中
+    register-with-eureka: false
 #    fetch-registry: false
 
 # 访问注册中心的 页面端口号

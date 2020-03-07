@@ -14,8 +14,16 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8888/eureka/
+    # 客户端的健康检查
+    healthcheck:
+      enabled: true
   instance:
     hostname: clientConfigName
+    # 注: 该两个配置是在 client 端配置, server 支持每个client中可以有不同的配置
+    #  续约 心跳时间超时 20s后会注销 该client
+    lease-expiration-duration-in-seconds: 20
+    # 续约 心跳的间隔 10s
+    lease-renewal-interval-in-seconds: 10
 
 # 访问 controller 的端口和上下文
 server:

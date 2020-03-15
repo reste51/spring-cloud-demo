@@ -77,6 +77,18 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<!--spring 仓库-->
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<!-- 排除快照版本 -->
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>

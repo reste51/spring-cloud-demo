@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Created by Michael on 2017/10/28.
+ *
+ * 1. 测试
  */
 @SpringBootApplication
 public class ServiceApplication {

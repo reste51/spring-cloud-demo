@@ -41,6 +41,7 @@ if __name__ == '__main__':
     tfactory = TTransport.TFramedTransportFactory()
     pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 
+    # 端口  协议
     server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
     print ("python thrift server start")
     server.serve()

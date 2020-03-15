@@ -6,6 +6,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>api-gateway</module>
+        <module>imooc-add-service</module>
+        <module>imooc-add-service</module>
     </modules>
 
     <parent>

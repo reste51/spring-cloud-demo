@@ -13,10 +13,12 @@ sender = 'imoocd@163.com'
 authCode = 'aA111111'
 class MessageServiceHandler:
 
+    # 发送短信
     def sendMobileMessage(self, mobile, message):
         print ("sendMobileMessage, mobile:"+mobile+", message:"+message)
         return True
 
+    # 发送邮件
     def sendEmailMessage(self, email, message):
         print ("sendEmailMessage, email:"+email+", message:"+message)
         messageObj = MIMEText(message, "plain", "utf-8")
@@ -33,15 +35,18 @@ class MessageServiceHandler:
             print ("send mail failed!")
             return False
 
-
 if __name__ == '__main__':
+    # 对接 thrift 通讯
     handler = MessageServiceHandler()
     processor = MessageService.Processor(handler)
+    # 监听端口号为 9090
     transport = TSocket.TServerSocket(None, "9090")
+    # 传输方式_ 帧方式
     tfactory = TTransport.TFramedTransportFactory()
+    # 二进制的传输协议
     pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 
-    # 端口  协议
+    #  服务器的实例
     server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
     print ("python thrift server start")
     server.serve()

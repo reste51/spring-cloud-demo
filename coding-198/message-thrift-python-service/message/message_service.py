@@ -11,16 +11,18 @@ from email.header import Header
 
 sender = 'imoocd@163.com'
 authCode = 'aA111111'
+
+
 class MessageServiceHandler:
 
     # 发送短信
     def sendMobileMessage(self, mobile, message):
-        print ("sendMobileMessage, mobile:"+mobile+", message:"+message)
+        print("sendMobileMessage, mobile:" + mobile + ", message:" + message)
         return True
 
     # 发送邮件
     def sendEmailMessage(self, email, message):
-        print ("sendEmailMessage, email:"+email+", message:"+message)
+        print("sendEmailMessage, email:" + email + ", message:" + message)
         messageObj = MIMEText(message, "plain", "utf-8")
         messageObj['From'] = sender
         messageObj['To'] = email
@@ -29,11 +31,12 @@ class MessageServiceHandler:
             smtpObj = smtplib.SMTP('smpt.163.com')
             smtpObj.login(sender, authCode)
             smtpObj.sendmail(sender, [email], messageObj.as_string())
-            print ("send mail success")
+            print("send mail success")
             return True
         except smtplib.SMTPException:
-            print ("send mail failed!")
+            print("send mail failed!")
             return False
+
 
 if __name__ == '__main__':
     # 对接 thrift 通讯
@@ -48,6 +51,6 @@ if __name__ == '__main__':
 
     #  服务器的实例
     server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
-    print ("python thrift server start")
+    print("python thrift server start")
     server.serve()
-    print ("python thrift server exit")
+    print("python thrift server exit")

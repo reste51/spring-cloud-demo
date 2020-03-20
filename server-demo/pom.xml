@@ -8,6 +8,7 @@
         <module>api-gateway</module>
         <module>imooc-add-service</module>
         <module>imooc-add-service</module>
+        <module>springboot-study</module>
     </modules>
 
     <parent>

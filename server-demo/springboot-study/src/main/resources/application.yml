@@ -1,0 +1,34 @@
+# 当前激活的 配置类型
+spring:
+  profiles:
+    active: prod
+
+addConf:
+  mysql:
+    host: 127.0.0.1
+    username: root
+    password: 123456
+
+
+# --- (三个字符)为 配置的分割符,类似不同的文件
+---
+# 声明为 dev 环境的配置文件
+spring:
+  profiles: dev
+server:
+  port: 8080
+
+---
+# 声明为 test 环境的配置文件
+spring:
+  profiles: test
+server:
+  port: 8090
+
+---
+# 声明为 pro 环境的配置文件
+
+spring:
+  profiles: prod
+server:
+  port: 8888

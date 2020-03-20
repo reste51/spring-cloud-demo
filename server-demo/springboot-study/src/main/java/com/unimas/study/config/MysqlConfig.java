@@ -15,10 +15,20 @@ import org.springframework.stereotype.Component;
  **/
 @Data
 @Component
-@ConfigurationProperties(prefix = "addConf.mysql")
+@ConfigurationProperties(prefix = "add-conf.mysql")
 public class MysqlConfig {
     private  String host;
     private  String port;
     private  String username;
     private  String password;
+
+    @Override
+    public String toString() {
+        return "MysqlConfig{" +
+                "host='" + host + '\'' +
+                ", port='" + port + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

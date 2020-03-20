@@ -1,0 +1,5 @@
+# 声明为 dev 环境的配置文件
+spring:
+  profiles: dev
+server:
+  port: 8080

@@ -1,0 +1,5 @@
+# 声明为 test 环境的配置文件
+spring:
+  profiles: test
+server:
+  port: 8090

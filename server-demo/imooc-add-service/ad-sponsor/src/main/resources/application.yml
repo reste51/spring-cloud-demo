@@ -1,0 +1,36 @@
+
+server:
+  port: 7000
+  servlet:
+    # controller 的请求上下文
+    context-path: /ad-sponsor
+
+# 注册中心的 应用名称
+spring:
+  application:
+    name: eureka-client-ad-sponsor
+  # java 持久化的配置
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    # 格式化sql
+    properties:
+      hibernate.format_sql: true
+    # 取消懒加载
+    open-in-view: false
+  # 数据源
+  datasource:
+    url: jdbc:mysql://localhost:3306/imooc_add_data
+    username: root
+    password: 123456
+    # 最大和最小的 连接数
+    tomcat:
+      max-active: 4
+      min-idle: 2
+
+#  注册到  服务中心到
+eureka:
+  client:
+    service-url: http://localhost:8888/eureka/
+

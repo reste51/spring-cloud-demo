@@ -1,5 +1,5 @@
 namespace java com.imooc.thrift.user
-
+# 定义实体类
 struct UserInfo {
     1:i32 id,
     2:string username,
@@ -11,6 +11,7 @@ struct UserInfo {
     8:i32 stars
 }
 
+# 定义接口服务  及  接口方法
 service UserService {
 
     UserInfo getUserById(1:i32 id);

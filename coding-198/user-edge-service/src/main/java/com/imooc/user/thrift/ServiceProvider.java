@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
+ * thrift  客户端
  * Created by Michael on 2017/10/30.
  */
 @Component
 public class ServiceProvider {
-
     @Value("${thrift.user.ip}")
     private String serverIp;
 
@@ -43,7 +43,7 @@ public class ServiceProvider {
 
         return getService(messageServerIp, messageServerPort, ServiceType.MESSAGE);
     }
-
+    // 获取 服务端实例
     public <T> T getService(String ip, int port, ServiceType serviceType) {
         TSocket socket = new TSocket(ip, port, 3000);
         TTransport transport = new TFramedTransport(socket);

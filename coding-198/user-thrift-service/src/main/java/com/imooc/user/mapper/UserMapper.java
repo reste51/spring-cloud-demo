@@ -12,16 +12,28 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper {
 
+    /**
+     * 根据用户 id 先查询用户信息
+     * @param id
+     * @return
+     */
     @Select("select id,username, password, real_name as realName," +
             "mobile, email from pe_user where id=#{id}")
     UserInfo getUserById(@Param("id")int id);
 
-
+    /**
+     * 根据用户名 查询用户信息
+     * @param username
+     * @return
+     */
     @Select("select id,username, password, real_name as realName," +
             "mobile, email from pe_user where username=#{username}")
     UserInfo getUserByName(@Param("username")String username);
 
-
+    /**
+     * 注册用户信息
+     * @param userInfo
+     */
     @Insert("insert into pe_user (username, password, real_name, mobile, email)" +
             "values (#{u.username}, #{u.password}, #{u.realName}, #{u.mobile}, #{u.email})")
     void registerUser(@Param("u") UserInfo userInfo);

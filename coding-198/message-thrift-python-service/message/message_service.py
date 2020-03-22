@@ -23,11 +23,14 @@ class MessageServiceHandler:
     # 发送邮件
     def sendEmailMessage(self, email, message):
         print("sendEmailMessage, email:" + email + ", message:" + message)
+
         messageObj = MIMEText(message, "plain", "utf-8")
         messageObj['From'] = sender
         messageObj['To'] = email
+        # 主题_ 及文字的编码
         messageObj['Subject'] = Header('慕课网邮件', 'utf-8')
         try:
+            # 登录 smtp 服务
             smtpObj = smtplib.SMTP('smpt.163.com')
             smtpObj.login(sender, authCode)
             smtpObj.sendmail(sender, [email], messageObj.as_string())

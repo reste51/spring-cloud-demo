@@ -1,10 +1,13 @@
 package com.imooc.user.response;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
  * Created by Michael on 2017/10/30.
  */
+@Data
 public class Response implements Serializable {
 
     public static final Response USERNAME_PASSWORD_INVALID = new Response("1001", "username or password invalid");
@@ -36,19 +39,4 @@ public class Response implements Serializable {
         return new Response("9999", e.getMessage());
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

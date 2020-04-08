@@ -50,7 +50,7 @@ public class AdPlan {
         this.startDate =startDate;
         this.endDate = endDate;
         this.createTime = new Date();
-    }
+        }
 
 
-}
+        }

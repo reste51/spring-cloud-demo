@@ -1,7 +1,9 @@
 package com.imooc.ad.entity;
 
 import com.imooc.ad.constant.CommonStatus;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +19,8 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "ad_unit")
+@NoArgsConstructor
+@AllArgsConstructor
 public class AdUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

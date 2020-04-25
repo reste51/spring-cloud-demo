@@ -20,7 +20,7 @@ spring:
     open-in-view: false
   # 数据源
   datasource:
-    url: jdbc:mysql://localhost:3306/imooc_add_data
+    url: jdbc:mysql://192.168.0.103:3306/db_user
     username: root
     password: 123456
     # 最大和最小的 连接数
@@ -31,7 +31,8 @@ spring:
 #  注册到  服务中心到
 eureka:
   client:
-    service-url: http://localhost:8888/eureka/
+    service-url:
+      default-zone: http://localhost:8888/eureka/
 
 # 访问其他微服务
 feign:

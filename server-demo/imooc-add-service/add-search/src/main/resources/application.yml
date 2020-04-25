@@ -32,7 +32,7 @@ spring:
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8888/eureka/
+      defaultZone: http://localhost:8888/eureka/
 
 # 访问其他微服务
 feign:

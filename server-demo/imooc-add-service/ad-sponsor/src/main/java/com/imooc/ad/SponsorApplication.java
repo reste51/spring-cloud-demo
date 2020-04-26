@@ -1,6 +1,4 @@
-package com.imooc.ad;/**
- * Created by DELL on 2020/3/21.
- */
+package com.imooc.ad;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

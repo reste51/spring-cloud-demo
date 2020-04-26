@@ -15,7 +15,7 @@ import javax.persistence.*;
  * @Date 2020/4/25 17:34
  * @Version 1.0
  **/
-@Table(name = "pe_user")
+@Table(name = "test1")
 @Entity
 @Data
 @NoArgsConstructor
@@ -26,8 +26,7 @@ public class HelloEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String userName;
-    private String password;
-    private String mobile;
-    private String email;
+    private String name;
+    private Integer age;
+    private Integer status;
 }

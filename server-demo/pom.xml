@@ -9,6 +9,7 @@
         <module>imooc-add-service</module>
         <module>imooc-add-service</module>
         <module>springboot-study</module>
+        <module>kafka-study</module>
     </modules>
 
     <parent>

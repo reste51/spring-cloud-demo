@@ -18,7 +18,7 @@ public class KafkaPropUtil {
      */
     public static Properties getCommonProp() {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.240.128:9092");
+        props.put("bootstrap.servers", "192.168.136.128:9092");
         props.put("acks", "all");       //判定是否成功发送，“all”会阻塞，性能低但可靠
         props.put("retries", 0);        //失败重试次数
         props.put("batch.size", 16384);//缓存区的大小，每个"活跃"的分区有一个缓存区
@@ -39,7 +39,7 @@ public class KafkaPropUtil {
      *  获取偏移量的kafka
      * @return
      */
-    public static Properties getProperties() {
+    public static Properties getOffsetProp() {
         Properties props = new Properties();
         props.put("bootstrap.servers", "192.168.240.128:9092");
         props.put("group.id", "test");   //消费者组 ，不能不写，这个不一定和9092的消费者的group.id对应，随便写的

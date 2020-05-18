@@ -12,6 +12,8 @@ import java.util.concurrent.Future;
 
 /**
  * kafka的生产者
+ *  注: 笔记本电脑 无法连接kafka server的问题 是自己手动将 port 9092加入到防火墙了........
+ *   每次处理需要telnet下， 是否连通
  *
  * linux 命令为： bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
  * @ClassName MyProducer
@@ -23,6 +25,8 @@ import java.util.concurrent.Future;
 public class MyProducer {
     // 发送消息
     private static KafkaProducer<String,String> producer;
+
+    private static String TOPIC_NAME = "lyj11";
 
     // 设置配置 
     static {
@@ -36,7 +40,7 @@ public class MyProducer {
 
     // 1.发送消息_ 只发送不管结果
     private static void  sendMessageForgetResult(){
-        ProducerRecord<String,String> record = new ProducerRecord<String, String>("cs111","name","ForgetResult");
+        ProducerRecord<String,String> record = new ProducerRecord<String, String>(TOPIC_NAME,"name","ForgetResult");
         producer.send(record);
         producer.close();
     }
@@ -45,10 +49,10 @@ public class MyProducer {
         注: 阻塞的时， 打印数字是 有顺序的， 而异步则是  无顺序的
       */
     private static void  sendMsgWithNonblocking(){
-        Producer<String, String> producer = new KafkaProducer<>(KafkaPropUtil.getProperties());
+        Producer<String, String> producer = new KafkaProducer<>(KafkaPropUtil.getCommonProp());
         for(int i = 0; i < 100; i++) {
             //异步，添加消息到缓存区，等待到一定程度把这些消息一起发送到集群
-            producer.send(new ProducerRecord<String, String>("cs111",  Integer.toString(i)));
+            producer.send(new ProducerRecord<String, String>(TOPIC_NAME,  Integer.toString(i)));
         }
         producer.close();  //关闭生产者，不关闭为造成还没发送过去的消息发生泄漏
     }
@@ -60,11 +64,11 @@ public class MyProducer {
         注: 阻塞的时， 打印数字是 有顺序的， 而异步则是  无顺序的
      */
     public static  void  sendMsgWithResult() throws ExecutionException, InterruptedException {
-        Producer<String, String> producer = new KafkaProducer<>(KafkaPropUtil.getProperties());
+        Producer<String, String> producer = new KafkaProducer<>(KafkaPropUtil.getCommonProp());
 
         for(int i = 0; i < 100; i++) {
             //异步，添加消息到缓存区，等待到一定程度把这些消息一起发送到集群
-            Future<RecordMetadata> frm = producer.send(new ProducerRecord<String, String>("cs111",  Integer.toString(i)+"：is Blocking!"));
+            Future<RecordMetadata> frm = producer.send(new ProducerRecord<String, String>(TOPIC_NAME,  Integer.toString(i)+"：is Blocking!"));
             RecordMetadata rm = frm.get();
             System.out.println(String.format("阻塞信息为：topic: %s, 分区为: %s",rm.topic(),rm.partition()));
         }
@@ -76,11 +80,11 @@ public class MyProducer {
       如果你想通过判断 Future<RecordMetadata> 是否为 null ，那你肯定不对，因为不管成不成功，Future<RecordMetadata> 都不为null
      */
     public static void  sendMsgWithCallback() throws ExecutionException, InterruptedException {
-        Producer<String, String> producer = new KafkaProducer<>(KafkaPropUtil.getProperties());
+        Producer<String, String> producer = new KafkaProducer<>(KafkaPropUtil.getCommonProp());
 
         for(int i = 0; i < 100; i++) {
             //异步，添加消息到缓存区，等待到一定程度把这些消息一起发送到集群
-            ProducerRecord record = new ProducerRecord<String, String>("cs111",  Integer.toString(i)+"：is Blocking!");
+            ProducerRecord record = new ProducerRecord<String, String>(TOPIC_NAME,  Integer.toString(i)+"：is Blocking!");
             Future<RecordMetadata> frm = producer.send(record,(recordMetadata, e) -> {
                 if(e!=null){
                     System.out.println(" 调用出错！ 请稍后再试");
@@ -97,10 +101,10 @@ public class MyProducer {
 
     public static void main(String[] args) throws Exception {
 //        sendMessageForgetResult();
-//        sendMsgWithNonblocking();
+        sendMsgWithNonblocking();
 //        sendMsgWithResult();
 
-        sendMsgWithCallback();
+//        sendMsgWithCallback();
     }
 
 

@@ -17,8 +17,8 @@ import java.util.Map;
  * @Date 2020/4/25 17:41
  * @Version 1.0
  **/
-@RestController
 @Slf4j
+@RestController
 @RequestMapping("search")
 public class SearchController {
     @Autowired
